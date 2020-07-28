@@ -2,7 +2,6 @@ package BOJ;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
-import java.util.Arrays;
 import java.util.StringTokenizer;
 
 public class BOJ1613_역사 {
@@ -24,8 +23,8 @@ public class BOJ1613_역사 {
 		for(int i=0; i<k; i++) {
 			st = new StringTokenizer(br.readLine());
 			int s = Integer.parseInt(st.nextToken()), e = Integer.parseInt(st.nextToken());
-			if(dist[s][e]>0) appendLine(sb, 1);
-			else if(dist[e][s]>0) appendLine(sb, -1);
+			if(dist[s][e]>0) appendLine(sb, -1);
+			else if(dist[e][s]>0) appendLine(sb, 1);
 			else if(dist[s][e]==0) appendLine(sb, 0);
 		}
 		System.out.println(sb.toString());
