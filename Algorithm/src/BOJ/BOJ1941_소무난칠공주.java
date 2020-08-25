@@ -18,22 +18,22 @@ public class BOJ1941_소무난칠공주 {
 			int y = i/SIZE;
 			int x = i%SIZE;
 			if(map[y][x]==이다솜파) {
-				rtv+=dfs(1, 0, 1<<i, i);
+				rtv+=dfs(1, 0, 1<<i);
 			}else {
-				rtv+=dfs(0, 1, 1<<i, i);
+				rtv+=dfs(0, 1, 1<<i);
 			}
 		}
 		return rtv;
 	}
 	static int[] dy= {-1, 0, 1, 0}, dx= {0, 1, 0, -1};
-	private static int dfs(int dasom, int doyun, int bitV, int idx) {
+	private static int dfs(int dasom, int doyun, int bitV) {
 		if(doyun > 3) return 0;
 		if(dasom + doyun == 7) {
 			return 1;
 		}
 
 		int rtv = 0;
-		for(int i=0; i<=idx; i++) {
+		for(int i=0; i<SIZE*SIZE; i++) {
 			if((bitV&(1<<i)) == 0) continue;
 			int y = i/SIZE;
 			int x = i%SIZE;
@@ -44,9 +44,9 @@ public class BOJ1941_소무난칠공주 {
 				if(ny < 0 || nx < 0 || ny>=SIZE || nx>=SIZE || visited[bitV|(1<<nextV)]) continue;
 				visited[bitV|(1<<nextV)] = true;
 				if(map[ny][nx] == 이다솜파) {
-					rtv += dfs(dasom+1, doyun, bitV|(1<<nextV), nextV);
+					rtv += dfs(dasom+1, doyun, bitV|(1<<nextV));
 				}else {
-					rtv += dfs(dasom, doyun+1, bitV|(1<<nextV), nextV);
+					rtv += dfs(dasom, doyun+1, bitV|(1<<nextV));
 				}
 			}
 		}
